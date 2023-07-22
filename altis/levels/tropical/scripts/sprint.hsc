@@ -119,23 +119,24 @@
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player0))
-		(if is_sprinting0
-			(begin
-				(units_set_desired_flashlight_state (player0) false)
-				(set is_sprinting0 false)
-				(objects_detach (player0) sprint_weap0)
-				(damage_object destroyer sprint_weap0)
-			)
-			(if player0_moving
-				(begin	
-					(units_set_desired_flashlight_state (player0) false)
-					(set is_sprinting0 true)
-					(object_create_anew sprint_weap0)
-					(objects_attach (player0) "body" sprint_weap0 "")
+		(begin
+			(if is_sprinting0
+				(begin
+					(set is_sprinting0 false)
 					(objects_detach (player0) sprint_weap0)
-					(sleep 1)
+					(damage_object destroyer sprint_weap0)
+				)
+				(if player0_moving
+					(begin	
+						(set is_sprinting0 true)
+						(object_create_anew sprint_weap0)
+						(objects_attach (player0) "body" sprint_weap0 "")
+						(objects_detach (player0) sprint_weap0)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player0) false)
 		)
 		
 		;;PASSIVE
@@ -153,35 +154,36 @@
 	)
 )
 
-
 (script continuous sprint1
 	;;VELOCITY
 	(set temp (abs_real (objects_distance_to_flag (player1) x)))
 	(set temp2 (abs_real (objects_distance_to_flag (player1) y)))
 	
 	(set player1_moving (> (+ (abs_real (- temp player1_x)) (abs_real (- temp2 player1_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player1_x)) (abs_real (- temp2 player1_y))))
 	(set player1_x temp)
 	(set player1_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player1))
-		(if is_sprinting1
-			(begin
-				(units_set_desired_flashlight_state (player1) false)
-				(set is_sprinting1 false)
-				(objects_detach (player1) sprint_weap1)
-				(damage_object destroyer sprint_weap1)
-			)
-			(if player1_moving
-				(begin	
-					(units_set_desired_flashlight_state (player1) false)
-					(set is_sprinting1 true)
-					(object_create_anew sprint_weap1)
-					(objects_attach (player1) "body" sprint_weap1 "")
+		(begin
+			(if is_sprinting1
+				(begin
+					(set is_sprinting1 false)
 					(objects_detach (player1) sprint_weap1)
-					(sleep 1)
+					(damage_object destroyer sprint_weap1)
+				)
+				(if player1_moving
+					(begin	
+						(set is_sprinting1 true)
+						(object_create_anew sprint_weap1)
+						(objects_attach (player1) "body" sprint_weap1 "")
+						(objects_detach (player1) sprint_weap1)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player1) false)
 		)
 		
 		;;PASSIVE
@@ -205,28 +207,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player2) y)))
 	
 	(set player2_moving (> (+ (abs_real (- temp player2_x)) (abs_real (- temp2 player2_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player2_x)) (abs_real (- temp2 player2_y))))
 	(set player2_x temp)
 	(set player2_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player2))
-		(if is_sprinting2
-			(begin
-				(units_set_desired_flashlight_state (player2) false)
-				(set is_sprinting2 false)
-				(objects_detach (player2) sprint_weap2)
-				(damage_object destroyer sprint_weap2)
-			)
-			(if player2_moving
-				(begin	
-					(units_set_desired_flashlight_state (player2) false)
-					(set is_sprinting2 true)
-					(object_create_anew sprint_weap2)
-					(objects_attach (player2) "body" sprint_weap2 "")
+		(begin
+			(if is_sprinting2
+				(begin
+					(set is_sprinting2 false)
 					(objects_detach (player2) sprint_weap2)
-					(sleep 1)
+					(damage_object destroyer sprint_weap2)
+				)
+				(if player2_moving
+					(begin	
+						(set is_sprinting2 true)
+						(object_create_anew sprint_weap2)
+						(objects_attach (player2) "body" sprint_weap2 "")
+						(objects_detach (player2) sprint_weap2)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player2) false)
 		)
 		
 		;;PASSIVE
@@ -250,28 +254,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player3) y)))
 	
 	(set player3_moving (> (+ (abs_real (- temp player3_x)) (abs_real (- temp2 player3_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player3_x)) (abs_real (- temp2 player3_y))))
 	(set player3_x temp)
 	(set player3_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player3))
-		(if is_sprinting3
-			(begin
-				(units_set_desired_flashlight_state (player3) false)
-				(set is_sprinting3 false)
-				(objects_detach (player3) sprint_weap3)
-				(damage_object destroyer sprint_weap3)
-			)
-			(if player3_moving
-				(begin	
-					(units_set_desired_flashlight_state (player3) false)
-					(set is_sprinting3 true)
-					(object_create_anew sprint_weap3)
-					(objects_attach (player3) "body" sprint_weap3 "")
+		(begin
+			(if is_sprinting3
+				(begin
+					(set is_sprinting3 false)
 					(objects_detach (player3) sprint_weap3)
-					(sleep 1)
+					(damage_object destroyer sprint_weap3)
+				)
+				(if player3_moving
+					(begin	
+						(set is_sprinting3 true)
+						(object_create_anew sprint_weap3)
+						(objects_attach (player3) "body" sprint_weap3 "")
+						(objects_detach (player3) sprint_weap3)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player3) false)
 		)
 		
 		;;PASSIVE
@@ -295,28 +301,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player4) y)))
 	
 	(set player4_moving (> (+ (abs_real (- temp player4_x)) (abs_real (- temp2 player4_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player4_x)) (abs_real (- temp2 player4_y))))
 	(set player4_x temp)
 	(set player4_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player4))
-		(if is_sprinting4
-			(begin
-				(units_set_desired_flashlight_state (player4) false)
-				(set is_sprinting4 false)
-				(objects_detach (player4) sprint_weap4)
-				(damage_object destroyer sprint_weap4)
-			)
-			(if player4_moving
-				(begin	
-					(units_set_desired_flashlight_state (player4) false)
-					(set is_sprinting4 true)
-					(object_create_anew sprint_weap4)
-					(objects_attach (player4) "body" sprint_weap4 "")
+		(begin
+			(if is_sprinting4
+				(begin
+					(set is_sprinting4 false)
 					(objects_detach (player4) sprint_weap4)
-					(sleep 1)
+					(damage_object destroyer sprint_weap4)
+				)
+				(if player4_moving
+					(begin	
+						(set is_sprinting4 true)
+						(object_create_anew sprint_weap4)
+						(objects_attach (player4) "body" sprint_weap4 "")
+						(objects_detach (player4) sprint_weap4)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player4) false)
 		)
 		
 		;;PASSIVE
@@ -340,28 +348,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player5) y)))
 	
 	(set player5_moving (> (+ (abs_real (- temp player5_x)) (abs_real (- temp2 player5_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player5_x)) (abs_real (- temp2 player5_y))))
 	(set player5_x temp)
 	(set player5_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player5))
-		(if is_sprinting5
-			(begin
-				(units_set_desired_flashlight_state (player5) false)
-				(set is_sprinting5 false)
-				(objects_detach (player5) sprint_weap5)
-				(damage_object destroyer sprint_weap5)
-			)
-			(if player5_moving
-				(begin	
-					(units_set_desired_flashlight_state (player5) false)
-					(set is_sprinting5 true)
-					(object_create_anew sprint_weap5)
-					(objects_attach (player5) "body" sprint_weap5 "")
+		(begin
+			(if is_sprinting5
+				(begin
+					(set is_sprinting5 false)
 					(objects_detach (player5) sprint_weap5)
-					(sleep 1)
+					(damage_object destroyer sprint_weap5)
+				)
+				(if player5_moving
+					(begin	
+						(set is_sprinting5 true)
+						(object_create_anew sprint_weap5)
+						(objects_attach (player5) "body" sprint_weap5 "")
+						(objects_detach (player5) sprint_weap5)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player5) false)
 		)
 		
 		;;PASSIVE
@@ -385,28 +395,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player6) y)))
 	
 	(set player6_moving (> (+ (abs_real (- temp player6_x)) (abs_real (- temp2 player6_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player6_x)) (abs_real (- temp2 player6_y))))
 	(set player6_x temp)
 	(set player6_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player6))
-		(if is_sprinting6
-			(begin
-				(units_set_desired_flashlight_state (player6) false)
-				(set is_sprinting6 false)
-				(objects_detach (player6) sprint_weap6)
-				(damage_object destroyer sprint_weap6)
-			)
-			(if player6_moving
-				(begin	
-					(units_set_desired_flashlight_state (player6) false)
-					(set is_sprinting6 true)
-					(object_create_anew sprint_weap6)
-					(objects_attach (player6) "body" sprint_weap6 "")
+		(begin
+			(if is_sprinting6
+				(begin
+					(set is_sprinting6 false)
 					(objects_detach (player6) sprint_weap6)
-					(sleep 1)
+					(damage_object destroyer sprint_weap6)
+				)
+				(if player6_moving
+					(begin	
+						(set is_sprinting6 true)
+						(object_create_anew sprint_weap6)
+						(objects_attach (player6) "body" sprint_weap6 "")
+						(objects_detach (player6) sprint_weap6)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player6) false)
 		)
 		
 		;;PASSIVE
@@ -430,28 +442,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player7) y)))
 	
 	(set player7_moving (> (+ (abs_real (- temp player7_x)) (abs_real (- temp2 player7_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player7_x)) (abs_real (- temp2 player7_y))))
 	(set player7_x temp)
 	(set player7_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player7))
-		(if is_sprinting7
-			(begin
-				(units_set_desired_flashlight_state (player7) false)
-				(set is_sprinting7 false)
-				(objects_detach (player7) sprint_weap7)
-				(damage_object destroyer sprint_weap7)
-			)
-			(if player7_moving
-				(begin	
-					(units_set_desired_flashlight_state (player7) false)
-					(set is_sprinting7 true)
-					(object_create_anew sprint_weap7)
-					(objects_attach (player7) "body" sprint_weap7 "")
+		(begin
+			(if is_sprinting7
+				(begin
+					(set is_sprinting7 false)
 					(objects_detach (player7) sprint_weap7)
-					(sleep 1)
+					(damage_object destroyer sprint_weap7)
+				)
+				(if player7_moving
+					(begin	
+						(set is_sprinting7 true)
+						(object_create_anew sprint_weap7)
+						(objects_attach (player7) "body" sprint_weap7 "")
+						(objects_detach (player7) sprint_weap7)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player7) false)
 		)
 		
 		;;PASSIVE
@@ -475,28 +489,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player8) y)))
 	
 	(set player8_moving (> (+ (abs_real (- temp player8_x)) (abs_real (- temp2 player8_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player8_x)) (abs_real (- temp2 player8_y))))
 	(set player8_x temp)
 	(set player8_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player8))
-		(if is_sprinting8
-			(begin
-				(units_set_desired_flashlight_state (player8) false)
-				(set is_sprinting8 false)
-				(objects_detach (player8) sprint_weap8)
-				(damage_object destroyer sprint_weap8)
-			)
-			(if player8_moving
-				(begin	
-					(units_set_desired_flashlight_state (player8) false)
-					(set is_sprinting8 true)
-					(object_create_anew sprint_weap8)
-					(objects_attach (player8) "body" sprint_weap8 "")
+		(begin
+			(if is_sprinting8
+				(begin
+					(set is_sprinting8 false)
 					(objects_detach (player8) sprint_weap8)
-					(sleep 1)
+					(damage_object destroyer sprint_weap8)
+				)
+				(if player8_moving
+					(begin	
+						(set is_sprinting8 true)
+						(object_create_anew sprint_weap8)
+						(objects_attach (player8) "body" sprint_weap8 "")
+						(objects_detach (player8) sprint_weap8)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player8) false)
 		)
 		
 		;;PASSIVE
@@ -520,28 +536,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player9) y)))
 	
 	(set player9_moving (> (+ (abs_real (- temp player9_x)) (abs_real (- temp2 player9_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player9_x)) (abs_real (- temp2 player9_y))))
 	(set player9_x temp)
 	(set player9_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player9))
-		(if is_sprinting9
-			(begin
-				(units_set_desired_flashlight_state (player9) false)
-				(set is_sprinting9 false)
-				(objects_detach (player9) sprint_weap9)
-				(damage_object destroyer sprint_weap9)
-			)
-			(if player9_moving
-				(begin	
-					(units_set_desired_flashlight_state (player9) false)
-					(set is_sprinting9 true)
-					(object_create_anew sprint_weap9)
-					(objects_attach (player9) "body" sprint_weap9 "")
+		(begin
+			(if is_sprinting9
+				(begin
+					(set is_sprinting9 false)
 					(objects_detach (player9) sprint_weap9)
-					(sleep 1)
+					(damage_object destroyer sprint_weap9)
+				)
+				(if player9_moving
+					(begin	
+						(set is_sprinting9 true)
+						(object_create_anew sprint_weap9)
+						(objects_attach (player9) "body" sprint_weap9 "")
+						(objects_detach (player9) sprint_weap9)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player9) false)
 		)
 		
 		;;PASSIVE
@@ -565,28 +583,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player10) y)))
 	
 	(set player10_moving (> (+ (abs_real (- temp player10_x)) (abs_real (- temp2 player10_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player10_x)) (abs_real (- temp2 player10_y))))
 	(set player10_x temp)
 	(set player10_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player10))
-		(if is_sprinting10
-			(begin
-				(units_set_desired_flashlight_state (player10) false)
-				(set is_sprinting10 false)
-				(objects_detach (player10) sprint_weap10)
-				(damage_object destroyer sprint_weap10)
-			)
-			(if player10_moving
-				(begin	
-					(units_set_desired_flashlight_state (player10) false)
-					(set is_sprinting10 true)
-					(object_create_anew sprint_weap10)
-					(objects_attach (player10) "body" sprint_weap10 "")
+		(begin
+			(if is_sprinting10
+				(begin
+					(set is_sprinting10 false)
 					(objects_detach (player10) sprint_weap10)
-					(sleep 1)
+					(damage_object destroyer sprint_weap10)
+				)
+				(if player10_moving
+					(begin	
+						(set is_sprinting10 true)
+						(object_create_anew sprint_weap10)
+						(objects_attach (player10) "body" sprint_weap10 "")
+						(objects_detach (player10) sprint_weap10)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player10) false)
 		)
 		
 		;;PASSIVE
@@ -610,28 +630,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player11) y)))
 	
 	(set player11_moving (> (+ (abs_real (- temp player11_x)) (abs_real (- temp2 player11_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player11_x)) (abs_real (- temp2 player11_y))))
 	(set player11_x temp)
 	(set player11_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player11))
-		(if is_sprinting11
-			(begin
-				(units_set_desired_flashlight_state (player11) false)
-				(set is_sprinting11 false)
-				(objects_detach (player11) sprint_weap11)
-				(damage_object destroyer sprint_weap11)
-			)
-			(if player11_moving
-				(begin	
-					(units_set_desired_flashlight_state (player11) false)
-					(set is_sprinting11 true)
-					(object_create_anew sprint_weap11)
-					(objects_attach (player11) "body" sprint_weap11 "")
+		(begin
+			(if is_sprinting11
+				(begin
+					(set is_sprinting11 false)
 					(objects_detach (player11) sprint_weap11)
-					(sleep 1)
+					(damage_object destroyer sprint_weap11)
+				)
+				(if player11_moving
+					(begin	
+						(set is_sprinting11 true)
+						(object_create_anew sprint_weap11)
+						(objects_attach (player11) "body" sprint_weap11 "")
+						(objects_detach (player11) sprint_weap11)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player11) false)
 		)
 		
 		;;PASSIVE
@@ -655,28 +677,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player12) y)))
 	
 	(set player12_moving (> (+ (abs_real (- temp player12_x)) (abs_real (- temp2 player12_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player12_x)) (abs_real (- temp2 player12_y))))
 	(set player12_x temp)
 	(set player12_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player12))
-		(if is_sprinting12
-			(begin
-				(units_set_desired_flashlight_state (player12) false)
-				(set is_sprinting12 false)
-				(objects_detach (player12) sprint_weap12)
-				(damage_object destroyer sprint_weap12)
-			)
-			(if player12_moving
-				(begin	
-					(units_set_desired_flashlight_state (player12) false)
-					(set is_sprinting12 true)
-					(object_create_anew sprint_weap12)
-					(objects_attach (player12) "body" sprint_weap12 "")
+		(begin
+			(if is_sprinting12
+				(begin
+					(set is_sprinting12 false)
 					(objects_detach (player12) sprint_weap12)
-					(sleep 1)
+					(damage_object destroyer sprint_weap12)
+				)
+				(if player12_moving
+					(begin	
+						(set is_sprinting12 true)
+						(object_create_anew sprint_weap12)
+						(objects_attach (player12) "body" sprint_weap12 "")
+						(objects_detach (player12) sprint_weap12)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player12) false)
 		)
 		
 		;;PASSIVE
@@ -700,28 +724,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player13) y)))
 	
 	(set player13_moving (> (+ (abs_real (- temp player13_x)) (abs_real (- temp2 player13_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player13_x)) (abs_real (- temp2 player13_y))))
 	(set player13_x temp)
 	(set player13_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player13))
-		(if is_sprinting13
-			(begin
-				(units_set_desired_flashlight_state (player13) false)
-				(set is_sprinting13 false)
-				(objects_detach (player13) sprint_weap13)
-				(damage_object destroyer sprint_weap13)
-			)
-			(if player13_moving
-				(begin	
-					(units_set_desired_flashlight_state (player13) false)
-					(set is_sprinting13 true)
-					(object_create_anew sprint_weap13)
-					(objects_attach (player13) "body" sprint_weap13 "")
+		(begin
+			(if is_sprinting13
+				(begin
+					(set is_sprinting13 false)
 					(objects_detach (player13) sprint_weap13)
-					(sleep 1)
+					(damage_object destroyer sprint_weap13)
+				)
+				(if player13_moving
+					(begin	
+						(set is_sprinting13 true)
+						(object_create_anew sprint_weap13)
+						(objects_attach (player13) "body" sprint_weap13 "")
+						(objects_detach (player13) sprint_weap13)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player13) false)
 		)
 		
 		;;PASSIVE
@@ -745,28 +771,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player14) y)))
 	
 	(set player14_moving (> (+ (abs_real (- temp player14_x)) (abs_real (- temp2 player14_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player14_x)) (abs_real (- temp2 player14_y))))
 	(set player14_x temp)
 	(set player14_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player14))
-		(if is_sprinting14
-			(begin
-				(units_set_desired_flashlight_state (player14) false)
-				(set is_sprinting14 false)
-				(objects_detach (player14) sprint_weap14)
-				(damage_object destroyer sprint_weap14)
-			)
-			(if player14_moving
-				(begin	
-					(units_set_desired_flashlight_state (player14) false)
-					(set is_sprinting14 true)
-					(object_create_anew sprint_weap14)
-					(objects_attach (player14) "body" sprint_weap14 "")
+		(begin
+			(if is_sprinting14
+				(begin
+					(set is_sprinting14 false)
 					(objects_detach (player14) sprint_weap14)
-					(sleep 1)
+					(damage_object destroyer sprint_weap14)
+				)
+				(if player14_moving
+					(begin	
+						(set is_sprinting14 true)
+						(object_create_anew sprint_weap14)
+						(objects_attach (player14) "body" sprint_weap14 "")
+						(objects_detach (player14) sprint_weap14)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player14) false)
 		)
 		
 		;;PASSIVE
@@ -790,28 +818,30 @@
 	(set temp2 (abs_real (objects_distance_to_flag (player15) y)))
 	
 	(set player15_moving (> (+ (abs_real (- temp player15_x)) (abs_real (- temp2 player15_y))) min_speed))
+	;;(inspect (+ (abs_real (- temp player15_x)) (abs_real (- temp2 player15_y))))
 	(set player15_x temp)
 	(set player15_y temp2)
 	
 	;;FLASHLIGHT
 	(if (unit_get_current_flashlight_state (player15))
-		(if is_sprinting15
-			(begin
-				(units_set_desired_flashlight_state (player15) false)
-				(set is_sprinting15 false)
-				(objects_detach (player15) sprint_weap15)
-				(damage_object destroyer sprint_weap15)
-			)
-			(if player15_moving
-				(begin	
-					(units_set_desired_flashlight_state (player15) false)
-					(set is_sprinting15 true)
-					(object_create_anew sprint_weap15)
-					(objects_attach (player15) "body" sprint_weap15 "")
+		(begin
+			(if is_sprinting15
+				(begin
+					(set is_sprinting15 false)
 					(objects_detach (player15) sprint_weap15)
-					(sleep 1)
+					(damage_object destroyer sprint_weap15)
+				)
+				(if player15_moving
+					(begin	
+						(set is_sprinting15 true)
+						(object_create_anew sprint_weap15)
+						(objects_attach (player15) "body" sprint_weap15 "")
+						(objects_detach (player15) sprint_weap15)
+						(sleep 5)
+					)
 				)
 			)
+			(units_set_desired_flashlight_state (player15) false)
 		)
 		
 		;;PASSIVE

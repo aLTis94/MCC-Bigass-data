@@ -1,5 +1,6 @@
 
 (global real min_speed 0.07)
+(global real removal_distance 0.48)
   
 (global damage destroyer "altis\weapons\sprint\sprint_destroyer")
 (global object_definition sprint_weap "altis\weapons\sprint\sprint")
@@ -106,6 +107,53 @@
 (global real player15_x 1000)
 (global real player15_y 1000)
 (global boolean player15_moving false)
+
+
+;;this makes sure other players can't "steal" the sprint weapon
+(script static void (check_distance_to_sprint (unit player)(object sprint))
+	(set temp (objects_distance_to_object player sprint))
+	(if (or (> temp removal_distance) (= temp -1))
+		(begin
+			(objects_detach (player0) sprint)
+			(objects_detach (player1) sprint)
+			(objects_detach (player2) sprint)
+			(objects_detach (player3) sprint)
+			(objects_detach (player4) sprint)
+			(objects_detach (player5) sprint)
+			(objects_detach (player6) sprint)
+			(objects_detach (player7) sprint)
+			(objects_detach (player8) sprint)
+			(objects_detach (player9) sprint)
+			(objects_detach (player10) sprint)
+			(objects_detach (player11) sprint)
+			(objects_detach (player12) sprint)
+			(objects_detach (player13) sprint)
+			(objects_detach (player14) sprint)
+			(objects_detach (player15) sprint)
+			(damage_object destroyer sprint)
+		)
+	)
+)
+
+(script continuous sprint_removal_thingy
+	(check_distance_to_sprint (player0) sprint_weap0)
+	(check_distance_to_sprint (player1) sprint_weap1)
+	(check_distance_to_sprint (player2) sprint_weap2)
+	(check_distance_to_sprint (player3) sprint_weap3)
+	(check_distance_to_sprint (player4) sprint_weap4)
+	(check_distance_to_sprint (player5) sprint_weap5)
+	(check_distance_to_sprint (player6) sprint_weap6)
+	(check_distance_to_sprint (player7) sprint_weap7)
+	(check_distance_to_sprint (player8) sprint_weap8)
+	(check_distance_to_sprint (player9) sprint_weap9)
+	(check_distance_to_sprint (player10) sprint_weap10)
+	(check_distance_to_sprint (player11) sprint_weap11)
+	(check_distance_to_sprint (player12) sprint_weap12)
+	(check_distance_to_sprint (player13) sprint_weap13)
+	(check_distance_to_sprint (player14) sprint_weap14)
+	(check_distance_to_sprint (player15) sprint_weap15)
+)
+
 
 (script continuous sprint0
 	;;VELOCITY
